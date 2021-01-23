@@ -13,6 +13,8 @@ import org.junit.Test;
 
 import com.github.javafaker.Faker;
 
+import br.com.pessoal.service.Node;
+
 public class ArvoreBinariaTest {
 
 	@Test
@@ -23,7 +25,7 @@ public class ArvoreBinariaTest {
 		
 		for(int i = 0 ; i < 10 ; i++ ){
 			listaArvore.add(faker.number().randomDigitNotZero());
-			raiz.add(listaArvore.get(listaArvore.size() - 1, raiz));
+			Node.add(listaArvore.get(listaArvore.size() - 1), raiz);
 		}
 		
 		List<Integer> listaRaiz = raiz.valoresDaArvore();
