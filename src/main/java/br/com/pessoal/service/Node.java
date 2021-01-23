@@ -12,15 +12,16 @@ public class Node {
 		this.valor = valor;
 		direita = esquerda = null;
 	}
-	
-	public Node() {}
-	
+
+	public Node() {
+	}
+
 	public void add(Integer valor) {
-		if(this.valor == null) {
+		if (this.valor == null) {
 			this.valor = valor;
 			return;
 		}
-		
+
 		if (valor <= this.valor) {
 			if (this.esquerda == null) {
 				this.esquerda = new Node(valor);
@@ -29,9 +30,9 @@ public class Node {
 			this.esquerda.add(valor);
 			return;
 		}
-		
-		if(valor >= this.valor) {
-			if(this.direita == null) {
+
+		if (valor >= this.valor) {
+			if (this.direita == null) {
 				this.direita = new Node(valor);
 				return;
 			}
@@ -43,12 +44,25 @@ public class Node {
 	public static List<Integer> arvorePreOrder(Node no, List<Integer> listaArvore) {
 
 		listaArvore.add(no.valor);
-		
+
 		if (no.esquerda != null)
 			listaArvore = Node.arvorePreOrder(no.esquerda, listaArvore);
 
 		if (no.direita != null)
 			listaArvore = Node.arvorePreOrder(no.direita, listaArvore);
+
+		return listaArvore;
+	}
+
+	public static List<Integer> arvoreInOrder(Node no, List<Integer> listaArvore) {
+		
+		if (no.esquerda != null)
+			listaArvore = Node.arvoreInOrder(no.esquerda, listaArvore);
+
+		listaArvore.add(no.valor);
+		
+		if (no.direita != null)
+			listaArvore = Node.arvoreInOrder(no.direita, listaArvore);
 
 		return listaArvore;
 	}
