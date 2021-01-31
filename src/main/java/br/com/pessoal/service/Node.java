@@ -42,28 +42,29 @@ public class Node {
 	}
 
 	public static List<Integer> arvorePreOrder(Node no, List<Integer> listaArvore) {
-
 		listaArvore.add(no.valor);
-
 		if (no.esquerda != null)
 			listaArvore = Node.arvorePreOrder(no.esquerda, listaArvore);
-
 		if (no.direita != null)
 			listaArvore = Node.arvorePreOrder(no.direita, listaArvore);
-
 		return listaArvore;
 	}
 
 	public static List<Integer> arvoreInOrder(Node no, List<Integer> listaArvore) {
-		
 		if (no.esquerda != null)
 			listaArvore = Node.arvoreInOrder(no.esquerda, listaArvore);
-
 		listaArvore.add(no.valor);
-		
 		if (no.direita != null)
 			listaArvore = Node.arvoreInOrder(no.direita, listaArvore);
+		return listaArvore;
+	}
 
+	public static List<Integer> arvorePostOrder(Node no, List<Integer> listaArvore) {
+		if(no.direita != null)
+			listaArvore = Node.arvorePostOrder(no.direita, listaArvore);
+		listaArvore.add(no.valor);
+		if(no.esquerda != null)
+			listaArvore = Node.arvorePostOrder(no.esquerda, listaArvore);
 		return listaArvore;
 	}
 
